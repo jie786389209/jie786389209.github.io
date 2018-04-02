@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于linux平台的安防监控系统">
+<meta property="og:url" content="http://yoursite.com/2017/07/01/基于linux平台的安防监控系统/index.html">
+<meta property="og:site_name" content="热雪的博客">
+<meta property="og:description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="d:/Hexo/source/image/mjpg.png">
+<meta property="og:image" content="d:/Hexo/source/image/linux监控器硬件.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设硬件.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设软件框架.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设工作流程.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设移植.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设移植2.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设环境搭建.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设网页.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设网页代码.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设效果.png">
+<meta property="og:image" content="d:/Hexo/source/image/毕设效果图2.png">
+<meta property="og:updated_time" content="2018-04-02T02:12:48.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于linux平台的安防监控系统">
+<meta name="twitter:description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
+<meta name="twitter:image" content="d:/Hexo/source/image/mjpg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/01/基于linux平台的安防监控系统/"/>
+
+
+
+
+
+  <title>基于linux平台的安防监控系统 | 热雪的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">热雪的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/01/基于linux平台的安防监控系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蔡世杰">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://piccdn.gracg.com/uploadfile/photo/2018/3/pic_irr4a3niaqcobkdx3ogptzfgypafj7xw.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="热雪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于linux平台的安防监控系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-01T19:32:33+08:00">
+                2017-07-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/项目/" itemprop="url" rel="index">
+                    <span itemprop="name">项目</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、项目概况"><a href="#一、项目概况" class="headerlink" title="一、项目概况"></a>一、项目概况</h1><p>​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用户界面，实现了用户可以通过互联网登录到视频监控系统的网页，在页面上可以看到实时的摄像头监控区域。最后使用AltiumDesigner设计整个外围电路完成一个简小便捷的安防监控系统。</p>
+<h1 id="二、部件介绍"><a href="#二、部件介绍" class="headerlink" title="二、部件介绍"></a>二、部件介绍</h1><h2 id="1-嵌入式linux的简介"><a href="#1-嵌入式linux的简介" class="headerlink" title="1.嵌入式linux的简介"></a>1.嵌入式linux的简介</h2><p>​    说到嵌入式系统，本质其实就是一个计算机硬软件的集合，还包括其他零件，它是为达到特定的作用而开发出来的。嵌入式系统是种应用系统，至少包含一个可编程的PC机。而Linux做嵌入式的优点有很多：首先，Linux是开源的，这也使得遍布世界的 Linux热衷者是Linux开发的强大支持；其次，Linux的内核简小功能多而强大、处理速度高，更新速度十分快。Linux是免费的系统，得到许多人的开发应用。</p>
+<pre><code>Linux还有着嵌入式操作系统所有的很多特点，Linux能和许多硬件连接，内置的芯片含有许多不同的类型。到目前为止，它可以支持二三十种CPU。不仅如此它裁剪性很好，便于根据自己所需来开发应用。海内外很多企业公司，都有在做Linux的平台移植工作或应用。也就是说，如果开发的时候使用Linux平台来开发产品，换处理器芯片的时候只需要修改部分配置即可。与此同时，Linux内核的结构在开源网站是是十分完整的，Linux也很好地支持TCP/IP等协议。并且提供了包括十兆、百兆、千兆的以太网络，以及无线网络，Toker ring(令牌环网)、光纤的支持。所以Linux很适于做智能家居的开发。                  
+</code></pre><p>​    使用Linux的开发者日益渐多。Linux在迅猛增长的无线连接应用中有一个很重要的优点，就是开发速度快。这是因为Linux有很多简单实用小工具，这些工具提供十分方便的技术手段。因此，我们要在嵌入式系统中使用Linux操作系统。Linux本身所固有的模块性和可配置性，使得这十分简单就做到嵌入应用。另外，Linux源码的实用效果和社区的不断努力，导致嵌入式Linux应用百花齐放，各类应用都得到扩展且势头发展迅速。但是相对的Linux的图形界面一般，但近年Linux的图形界面发展也很快。</p>
+<h2 id="2-图像压缩标准JPEG的简介"><a href="#2-图像压缩标准JPEG的简介" class="headerlink" title="2.图像压缩标准JPEG的简介"></a>2.图像压缩标准JPEG的简介</h2><p>​    JPEG是联合图像专家小组(Joint Photographic coding Experts Group)的缩写。JPEG已作为ISO标准公布出来，是国际上静止彩色图像和灰度图像的国际标准。                              </p>
+<p>​    JPEG压缩既采用了有损压缩和无损压缩的技术，吸收各家之长，和相同画质的其他常用文件格式相比，JPEG是目前静态图像中压缩比最高的。正因为如此，在多媒体和网络程序等图像处理中它得到很好的应用。</p>
+<p>​    JPEG有几种模式，其中最常用的是基本系统，它是基于DCT变换的顺序型模式。JPEG使用的颜色是YUV格式。Y分量代表亮度，U和V分量代表了色差信号息，只用Y分量就能全部表示出一幅灰度图。而当同时考虑U、V分量时，就能够表示彩色图像，通过这样就可很方便的在灰和彩之间切换。在转化为YUV格式后，将图像分割成若干8*8的点阵，并对每一点阵进行DCT算法变换。经过变换后，低频分量都集中在左上角，高频分量分布在右下角。</p>
+<p>​    其中第一行第一列代表了直流(DC)系数，代表着子块的平均值，要对它进行独立编码处理。由于两个相邻的子块的DC系数相差很小，所以对它们DC系数的差值进行编码来提高压缩比。8*8的其他63个元素是交流(AC)系数，采用行程编码。为了保证低频分量先出现，高频分量后出现，以增加行程中连续0的个数，对这63个元素采用z字型排序方法，上面的处理结果得到了DC码字和AC行程码字，如果为了使压缩比得到提高，需要对其再进行熵编码，此时要用霍夫曼编码压缩技术。</p>
+<h2 id="3-Mjpg-streamer的简介"><a href="#3-Mjpg-streamer的简介" class="headerlink" title="3.Mjpg-streamer的简介"></a>3.Mjpg-streamer的简介</h2><h3 id="3-1-软件总结构"><a href="#3-1-软件总结构" class="headerlink" title="3.1 软件总结构"></a>3.1 软件总结构</h3><p>​    Mjpg-streamer采用模块化设计方法，以模块为单位进行功能的设计和行为的描述，这些功能模块被称作组件(plugins)，其架构主要分为三大部分：主线程mjpg—streamer.c，输入组件input和输出组件output。</p>
+<p><img src="D:\Hexo\source\image\mjpg.png" alt=""></p>
+<h3 id="3-2-相关组件介绍"><a href="#3-2-相关组件介绍" class="headerlink" title="3.2 相关组件介绍"></a>3.2 相关组件介绍</h3><p>​    Mjpg—streamer的组件分为输入组件input和输出组件output，程序中定义好了各个组件之间的输入、输出以及组件之间的衔接关系，用户可以根据自身需求很方便地选择、删改所需的模块，自己构建出所需功能的系统。目前来说，Mjpg-streamer最常用的输入组件为针对UVC(USB video class)摄像头的input_uvc，输出组件为output_http。根据这点本系统相应获取模块构建符合特定功能的系统。</p>
+<p>​    input_uvc输入组件主要完成的工作是获取摄像头的图片并将其进行压缩编码，共包括5个组件接口函数与其他接口衔接。Input_run函数是输入通道的运行函数，利用pthread_create函数创建工作线程，调用cam_thread抓取摄像头采集的一帧图像并进行格式转化，等待线程执行完毕后，调用pthread_detach函数回收线程资源。</p>
+<p>​    output_http输出组件主要完成的工作为创建http服务器线程、以 socket套接字形式将视频数据发送出去，并创建客户端线程、定义服务器对客户端请求的响应。服务器线程server—thread被定义在httpd.c中，由output_http.c的output_run函数创建，作用是打开一个TCP socket套接字并等待客户端连接。如有客户端连接，则为每一个连接到服务器的客户端创建一个client—thread，服务于该客户端，设置可同时监听10个 客户端。客户端线程client—thread的主要工作为接收客户端发送的请求并进行解析，根据请求类型作出相应操作。</p>
+<h2 id="4-核心板S5PV210简介"><a href="#4-核心板S5PV210简介" class="headerlink" title="4. 核心板S5PV210简介"></a>4. 核心板S5PV210简介</h2><p>​    S5PV210是一款适用于智能手机和平板电脑等多媒体设备的应用处理器。S5PV210采用了ARM CortexTM-A8内核，ARM V7指令集，主频可达1GHZ，64/32位内部总线结构，32/32KB的数据/指令一级缓存，512KB的二级缓存，可以实现2000DMIPS（每秒运算2亿条指令集）的高性能运算能力。其中，DDR2 RAM为512M,NAND Flash为512M。CPU芯片及其模块构成的核心板具有体积小，耗电低，处理能力强等特点，能够移植和运行嵌入式Linux系统。</p>
+<pre><code>此外，S5PV210包含很多强大的硬件编解码功能，支持MPEG-1/2/4，JPEG硬件编解码，最大支持8000x8000分辨率，具有出色的图形解码性能，支持全高清、多标准的视频编码，流畅播放和录制30帧/秒的1920×1080像素（1080p）的视频文件，可以更快解码更高质量的图像和视频。用户可以根据所需在该核心板上扩展外围电路设计。
+</code></pre><h1 id="三、硬件设计"><a href="#三、硬件设计" class="headerlink" title="三、硬件设计"></a>三、硬件设计</h1><p><img src="D:\Hexo\source\image\linux监控器硬件.png" alt=""></p>
+<p><img src="D:\Hexo\source\image\毕设硬件.png" alt=""></p>
+<h1 id="四、软件设计"><a href="#四、软件设计" class="headerlink" title="四、软件设计"></a>四、软件设计</h1><h2 id="4-1-软件框架"><a href="#4-1-软件框架" class="headerlink" title="4.1 软件框架"></a>4.1 软件框架</h2><p><img src="D:\Hexo\source\image\毕设软件框架.png" alt=""></p>
+<h2 id="4-2-软件工作流程"><a href="#4-2-软件工作流程" class="headerlink" title="4.2 软件工作流程"></a>4.2 软件工作流程</h2><p><img src="D:\Hexo\source\image\毕设工作流程.png" alt=""></p>
+<p>​    JPEG是通用的数据压缩算法库，本系统打算用该库作为数据压缩。而MJPG-Streamer是成熟的流媒体软件。移植后并作二次开发，软件的流程按照图片的采集、压缩、传输、显示的步骤设计。JPEG提供图像数据压缩和解压缩算法，mjpeg-streamer在包含jpeg的基础上，使用dlopen()打开插件，通过dlsym()获取相关函数。而在input_init()中对摄像头和V4L2驱动进行初始化，确定摄像头的输出参数和串口的配置参数。Intpt_run()创建图像的采集线程，该线程抓取图像后判断是否为正常，若正常再判断是否进行格式转化，最后复制到缓冲区并更新数据帧。Output_run()创建客户服务线程，若有客户端连接，则启动客户线程,客户以TCP方式来发送图像到浏览器。</p>
+<h2 id="4-3-Jpeg和mjpg-stream软件移植"><a href="#4-3-Jpeg和mjpg-stream软件移植" class="headerlink" title="4.3 Jpeg和mjpg-stream软件移植"></a>4.3 Jpeg和mjpg-stream软件移植</h2><h3 id="4-3-1-JPEG库移植"><a href="#4-3-1-JPEG库移植" class="headerlink" title="4.3.1 JPEG库移植"></a>4.3.1 JPEG库移植</h3><p>​    JPEG的代码已经十分成熟，JPEG的算法被确定为国际通用标准。JPEG有多种编码和压缩方式。在实际应用中，JPEG图像使用的是离散余弦变换、哈夫曼编码，顺序模式。下载了JPEG的编解码库后，先看看源码里面自带的libjpeg.doc文件和readme了解框架结构，选取部分代码即可获取完整的图像操作。</p>
+<p>​    以下是JPEG<strong>编码库</strong>的工作流程：</p>
+<p>①分配数据结构PEG压缩对象(JPEG compression object)并对其初始化。JPEG压缩对象数据结构用于内部保存了压缩参数和压缩的工作状态。</p>
+<p>②指定压缩后的数据的存放位置。</p>
+<p>③设置压缩参数，包括图像大小、颜色空间等。</p>
+<p>④调用jpeg_start_compress()开始压缩。</p>
+<p>⑤while(还有扫描行的图像数据需要压缩)调用jpeg_write_scanlines()；压缩一条扫描行的图像数据。</p>
+<p>⑥调用jpeg_finish_compress()；完成图像的压缩。⑦释放数据结构JPEG compression object；</p>
+<p>​    以下是JPEG<strong>解码库</strong>的工作流程：</p>
+<p>①分配数据结构JPEG解压缩对象(JPEG decompression object) 并对其初始化。</p>
+<p>②指定压缩数据的存放位置(比如 一个JPEG图像文件)。</p>
+<p>③调用jpeg_read_header()获取图形信息。</p>
+<p>④设置解压缩参数。</p>
+<p>⑤调用jpeg_start_decompress()开始解压缩 while(还有扫描行的图像数据需要解压缩)jpeg_read_scanlines()读取下一个扫描行的图像数据调用jpeg_finish_decompress()完成图像的解压缩。⑥是否JPEG解压缩对象(JPEG decompression object)；</p>
+<p>​    只选取核心编码部分，裁剪掉无关部分，可以减少空间占有量，由于S5PV210的内存：512MB DDR2，Flash：256MB SLC NAND FLASH，足够支撑程序大小，所以直接在Linux配置源码，（具体配置项可以运行命令./configure –help看看是什么意思，根据实际情况修改）./configure CC=arm-linux-gcc–host=arm-unknown-linux–prefix=/home/jpeg-6b/jpeg –enable-shared –enable-static其中/home/jpeg-6b/jpeg是编译后安装的目录，根据实际情况修改。然后将该代码库传到开发板的/home/mjpg目录下，该目录要事先创建好，以待接下来的项目操作。</p>
+<h3 id="4-3-2-流视频软件Mjpg-stream移植"><a href="#4-3-2-流视频软件Mjpg-stream移植" class="headerlink" title="4.3.2 流视频软件Mjpg-stream移植"></a>4.3.2 流视频软件Mjpg-stream移植</h3><p>​    MJPG-streamer软件采用模块框架设计来进行单位性描述。属于常用的视频流服务软件。其架构在简介中也得到解析，这样的设计简化程序员的工作，用户只需要遵守相应的规则和设计要求，就可以相应地改写软件，另外加入新的模块来丰富软件的功能设计[17]。      </p>
+<p>​    对于mjpg-streamer先下载源码，最新的版本使用以下命令下载，svn co<a href="https://mjpg-streamer.svn.sourceforge.net/svnroot/mjpg-streamer" target="_blank" rel="noopener">https://mjpg-streamer.svn.sourceforge.net/svnroot/mjpg-streamer</a> mjpg。然后进入其目录，修改部分源码：修改plugins/input_uvc/Makfile，</p>
+<p>①修改CFLAGS = -O2 -DLINUX -D_GNU_SOURCE -Wall -shared -fPIC  <strong>为</strong>  CFLAGS=-02 -DLINUX -D_GNU_SOURCE -Wall -shared -fPIC -I/home/jpeg-6b/jpeg/include </p>
+<p>②修改$(CC) $(CFLAGS) -ljpeg -o $@ input_uvc.c v4l2uvc.lo jpeg_utils.lo dynctrl.lo            <strong>为</strong></p>
+<p>   $(CC) $(CFLAGS) -ljpeg -L/home/jpeg-6b/jpeg/lib -o $@ input_uvc.c v4l2uvc.lo jpeg_utils.lo dynctrl.lo</p>
+<p>上面的过程就是将jpeg的库包含在mjpg-streamer的编译环境中，使两者对着这种依赖关系编译。接着使用命令make CC=arm-linux-gcc编译后，将系统产生的后缀为.so的可执行文件、mjpg-stream、start.sh和之前设计好的网页文件夹www一同放到/home/mjpg目录下，到此为止，jpeg和mjpg-stream的搭建已完毕。如图：</p>
+<p><img src="D:\Hexo\source\image\毕设移植.png" alt=""></p>
+<p><img src="D:\Hexo\source\image\毕设移植2.png" alt=""></p>
+<h1 id="五、环境搭建"><a href="#五、环境搭建" class="headerlink" title="五、环境搭建"></a>五、环境搭建</h1><p><img src="D:\Hexo\source\image\毕设环境搭建.png" alt=""></p>
+<p>​    启动目标板第一次加电时,目标板上的引导加载程序U-Boot立即获得处理器的控制权。该程序执行一些非常底层的硬件初始化，包括CPU处理器和内存管理设置，初始化UART来进行串行端口的格式控制，以及初始化以太网控制器来控制网络传输。</p>
+<p>​    初始化硬件后，U-Boot加载并引导Linux内核，所有的引导加载程序都提供了命令用于加载和执行操作系统镜像。使用git下载内核代码，主流的Linux都带有git，使用命令$ sudo apt-get install git-corek而已下载安装git，然后使用git命令git clone来从Linux内核源码官网下载内核代码。本系统根据所用的内核和功能相应的配置config工具，接着编译内核生成镜像文件，然后加工成启动程序并启动后，Linux会挂载一个根文件系统。可以通过以太网挂载其根文件系统，之后登陆进系统后会进入用户空间，此时用户空间进程对系统的访问受限，必须使用内核系统调用来请求内核服务，比如设备和文件I/O。到此为此，Linux的环境框架搭建完毕。</p>
+<h1 id="六、网页设计"><a href="#六、网页设计" class="headerlink" title="六、网页设计"></a>六、网页设计</h1><p>网页采用dreamwaver软件来设计，它是对网页进行视觉化开发的软件编程工具，使用它可以制作出丰富且动感，交互性良好的的网页界面。本系统是个监控系统，只需要设计出监控界面和部分参数调试按钮即可。系统的总文件如图：</p>
+<p>​       <img src="D:\Hexo\source\image\毕设网页.png" alt=""></p>
+<p>​    其中control和stream是html文件，stream对应视频栏，control对应控制栏，fix和style为字体和框架的属性设置。这几个文件放在一个叫www的文件夹中，以便后续的项目所需。</p>
+<p>​      <img src="D:\Hexo\source\image\毕设网页代码.png" alt="">   </p>
+<h1 id="七、效果图"><a href="#七、效果图" class="headerlink" title="七、效果图"></a>七、效果图</h1><p>测试工具:一台笔记本电脑，IE浏览器（或火狐浏览器），一根网线，UART串口线和超级终端。</p>
+<p>测试方案：网线和串口线与笔记本计算机和嵌入式开发板连接起来，通过超级终端连接Linux系统，进入目标目录运行程序。在这里运行start.sh，其内部其实就是运export LD_LIBRARY_PATH=”$(pwd)”   </p>
+<p> ./mjpg_streamer -o “output_http.so -w ./www”，其pwd为运行的当前路径，通过ldopen（）来寻找.so文件模型。当然，start.sh内部还定义各种操作方法，经过各种调试手段来获取理想的配置输出效果，本系统在这里运行基础命令即可运行出较为满意的效果。然后打开笔记本自带的ie浏览器，输入以下网址<a href="http://www.192.168.1.230:8080/mystream.html就会看到自己设计的界面。控制按钮还可以做到调节视频的亮度等功能。" target="_blank" rel="noopener">http://www.192.168.1.230:8080/mystream.html就会看到自己设计的界面。控制按钮还可以做到调节视频的亮度等功能。</a>    </p>
+<p>连接结果如下图，表明摄像头正常工作：</p>
+<p><img src="D:\Hexo\source\image\毕设效果.png" alt=""></p>
+<p><img src="D:\Hexo\source\image\毕设效果图2.png" alt=""></p>
+<p>该系统也存在一些缺陷：   </p>
+<p>①摄像头的像素可能偏低，如果追求高清画质可以选择高一点像素的摄像头；</p>
+<p>②外加模块不够丰富，s5pv210功能丰富，单做视频有点浪费，相应的可以再添加一些其他的模块，比如烟雾传感等智能家居要素，使系统功能更丰富；</p>
+<p>③摄像头只能录制某个特定方向的视频，要控制摄像头的转向可以添加一个控制方向的模块或者购买自带转向的摄像头，这样拍摄的视频角度更全。</p>
+<p>④用户界面略显单薄，加入其它一些智能家居的要素后重新设计更加系统全面的交互界面，丰富操作界面使其更人性化。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/17/hexo的搭建/" rel="prev" title="hexo的搭建">
+                hexo的搭建 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://piccdn.gracg.com/uploadfile/photo/2018/3/pic_irr4a3niaqcobkdx3ogptzfgypafj7xw.jpg"
+                alt="蔡世杰" />
+            
+              <p class="site-author-name" itemprop="name">蔡世杰</p>
+              <p class="site-description motion-element" itemprop="description">Winter is coming!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jie786389209" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/weixin_41123612" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、项目概况"><span class="nav-number">1.</span> <span class="nav-text">一、项目概况</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、部件介绍"><span class="nav-number">2.</span> <span class="nav-text">二、部件介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-嵌入式linux的简介"><span class="nav-number">2.1.</span> <span class="nav-text">1.嵌入式linux的简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-图像压缩标准JPEG的简介"><span class="nav-number">2.2.</span> <span class="nav-text">2.图像压缩标准JPEG的简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Mjpg-streamer的简介"><span class="nav-number">2.3.</span> <span class="nav-text">3.Mjpg-streamer的简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-软件总结构"><span class="nav-number">2.3.1.</span> <span class="nav-text">3.1 软件总结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-相关组件介绍"><span class="nav-number">2.3.2.</span> <span class="nav-text">3.2 相关组件介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-核心板S5PV210简介"><span class="nav-number">2.4.</span> <span class="nav-text">4. 核心板S5PV210简介</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、硬件设计"><span class="nav-number">3.</span> <span class="nav-text">三、硬件设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、软件设计"><span class="nav-number">4.</span> <span class="nav-text">四、软件设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-软件框架"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 软件框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-软件工作流程"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 软件工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Jpeg和mjpg-stream软件移植"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 Jpeg和mjpg-stream软件移植</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-1-JPEG库移植"><span class="nav-number">4.3.1.</span> <span class="nav-text">4.3.1 JPEG库移植</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-2-流视频软件Mjpg-stream移植"><span class="nav-number">4.3.2.</span> <span class="nav-text">4.3.2 流视频软件Mjpg-stream移植</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、环境搭建"><span class="nav-number">5.</span> <span class="nav-text">五、环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、网页设计"><span class="nav-number">6.</span> <span class="nav-text">六、网页设计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#七、效果图"><span class="nav-number">7.</span> <span class="nav-text">七、效果图</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蔡世杰</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
