@@ -105,11 +105,11 @@
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++面试问题">
-<meta property="og:url" content="http://yoursite.com/2018/04/13/C++面试/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/04/13/面试/C++面试/index.html">
 <meta property="og:site_name" content="热雪的博客">
 <meta property="og:description" content="C++有两种方式定义常量   用#define预处理器  用const关键字：const int  LENGTH = 10;  注意：定义const的常量接下来再不能赋值 12345&amp;gt; const double pi;                   &amp;gt; pi=3.14159265;&amp;gt; 修改为：&amp;gt; const double pi=3.141592;&amp;gt;    宏定">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-13T12:26:12.152Z">
+<meta property="og:updated_time" content="2018-04-19T08:28:48.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++面试问题">
 <meta name="twitter:description" content="C++有两种方式定义常量   用#define预处理器  用const关键字：const int  LENGTH = 10;  注意：定义const的常量接下来再不能赋值 12345&amp;gt; const double pi;                   &amp;gt; pi=3.14159265;&amp;gt; 修改为：&amp;gt; const double pi=3.141592;&amp;gt;    宏定">
@@ -142,7 +142,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/13/C++面试/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/13/面试/C++面试/"/>
 
 
 
@@ -276,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/13/C++面试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/13/面试/C++面试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="蔡世杰">
@@ -420,9 +420,9 @@
 <p>从 C++ 11 开始，auto 关键字不再是 C++ 存储类说明符，且 register 关键字被弃用。</p>
 <p>​</p>
 <ul>
-<li><h4 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a><strong>auto 存储类</strong></h4></li>
+<li><h4 id="auto-存储类"><a href="#auto-存储类" class="headerlink" title="auto 存储类"></a><strong>auto 存储类</strong></h4><pre><code>自 C++ 11 以来，**auto** 关键字用于两种情况：
+</code></pre></li>
 </ul>
-<p>​    自 C++ 11 以来，<strong>auto</strong> 关键字用于两种情况：</p>
 <p>1，声明变量时根据初始化表达式自动推断该变量的类型</p>
 <p>2，声明函数时函数返回值的占位符。</p>
 <p>​    C++98标准中auto关键字用于自动变量的声明，但由于使用极少且多余，在C++11中已删除这一用法。</p>
@@ -430,28 +430,33 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> f=<span class="number">3.14</span>;      <span class="comment">//double</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">s</span><span class="params">(<span class="string">"hello"</span>)</span></span>;  <span class="comment">//const char</span></span><br><span class="line"><span class="keyword">auto</span> z = <span class="keyword">new</span> <span class="keyword">auto</span>(<span class="number">9</span>); <span class="comment">// int*</span></span><br><span class="line"><span class="keyword">auto</span> x1 = <span class="number">5</span>, x2 = <span class="number">5.0</span>, x3=<span class="string">'r'</span>;<span class="comment">//错误，必须是初始化为同一类型</span></span><br></pre></td></tr></table></figure>
 <p>​</p>
 <ul>
-<li><h4 id="register-存储类"><a href="#register-存储类" class="headerlink" title="register 存储类"></a><strong>register 存储类</strong></h4></li>
+<li><h4 id="register-存储类"><a href="#register-存储类" class="headerlink" title="register 存储类"></a><strong>register 存储类</strong></h4><pre><code>**register** 存储类用于定义存储在寄存器中而不是 RAM 中的局部变量。
+
+寄存器只用于需要快速访问的变量，比如计数器。还应注意的是，定义 &apos;register&apos; 并不意味着变量将被存储在寄存器中，它意味着变量可能存储在寄存器中，这取决于硬件和实现的限制。
+</code></pre></li>
 </ul>
-<p>​    <strong>register</strong> 存储类用于定义存储在寄存器中而不是 RAM 中的局部变量。</p>
-<p>​    寄存器只用于需要快速访问的变量，比如计数器。还应注意的是，定义 ‘register’ 并不意味着变量将被存储在寄存器中，它意味着变量可能存储在寄存器中，这取决于硬件和实现的限制。</p>
 <p>​</p>
 <ul>
-<li><h4 id="static-存储类"><a href="#static-存储类" class="headerlink" title="static 存储类"></a><strong>static 存储类</strong></h4></li>
+<li><h4 id="static-存储类"><a href="#static-存储类" class="headerlink" title="static 存储类"></a><strong>static 存储类</strong></h4><pre><code>1，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。
+
+2，用在全局变量，使变量的作用域限制在声明它的文件内。
+
+3， 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。
+</code></pre></li>
 </ul>
-<p>​    1，使用 static 修饰局部变量可以在函数调用之间保持局部变量的值。</p>
-<p>​    2，用在全局变量，使变量的作用域限制在声明它的文件内。</p>
-<p>​    3， 用在类数据成员上时，会导致仅有一个该成员的副本被类的所有对象共享。</p>
 <p>下面展示static局部变量：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 函数声明 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">10</span>; <span class="comment">/* 全局变量 */</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(count--)</span><br><span class="line">    &#123;</span><br><span class="line">       func();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">func</span><span class="params">( <span class="keyword">void</span> )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">5</span>; <span class="comment">// 局部静态变量</span></span><br><span class="line">    i++;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"变量 i 为 "</span> &lt;&lt; i ;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">" , 变量 count 为 "</span> &lt;&lt; count &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">变量 i 为 <span class="number">6</span> , 变量 count 为 <span class="number">9</span></span><br><span class="line">变量 i 为 <span class="number">7</span> , 变量 count 为 <span class="number">8</span></span><br><span class="line">变量 i 为 <span class="number">8</span> , 变量 count 为 <span class="number">7</span></span><br><span class="line">变量 i 为 <span class="number">9</span> , 变量 count 为 <span class="number">6</span></span><br><span class="line">变量 i 为 <span class="number">10</span> , 变量 count 为 <span class="number">5</span></span><br><span class="line">变量 i 为 <span class="number">11</span> , 变量 count 为 <span class="number">4</span></span><br><span class="line">变量 i 为 <span class="number">12</span> , 变量 count 为 <span class="number">3</span></span><br><span class="line">变量 i 为 <span class="number">13</span> , 变量 count 为 <span class="number">2</span></span><br><span class="line">变量 i 为 <span class="number">14</span> , 变量 count 为 <span class="number">1</span></span><br><span class="line">变量 i 为 <span class="number">15</span> , 变量 count 为 <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <p>​</p>
 <ul>
-<li><h4 id="extern-存储类"><a href="#extern-存储类" class="headerlink" title="extern 存储类"></a><strong>extern 存储类</strong></h4></li>
+<li><h4 id="extern-存储类"><a href="#extern-存储类" class="headerlink" title="extern 存储类"></a><strong>extern 存储类</strong></h4><pre><code>**extern** 存储类用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。
+
+当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 *extern* 来得到已定义的变量或函数的引用。可以这么理解，*extern* 是用来在另一个文件中声明一个全局变量或函数。
+
+extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：
+</code></pre></li>
 </ul>
-<p>​    <strong>extern</strong> 存储类用于提供一个全局变量的引用，全局变量对所有的程序文件都是可见的。</p>
-<p>​    当您有多个文件且定义了一个可以在其他文件中使用的全局变量或函数时，可以在其他文件中使用 <em>extern</em> 来得到已定义的变量或函数的引用。可以这么理解，<em>extern</em> 是用来在另一个文件中声明一个全局变量或函数。</p>
-<p>​    extern 修饰符通常用于当有两个或多个文件共享相同的全局变量或函数的时候，如下所示：</p>
 <p><em>第一个文件：main.cpp</em></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> count ;</span><br><span class="line"><span class="function"><span class="keyword">extern</span> <span class="keyword">void</span> <span class="title">write_extern</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   count = <span class="number">5</span>;</span><br><span class="line">   write_extern();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><em>第二个文件：support.cpp</em></p>
@@ -461,14 +466,15 @@
 <p>这会产生 <strong>write</strong> 可执行程序，尝试执行 <strong>write</strong>，它会产生下列结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ./write</span><br><span class="line">Count is 5</span><br></pre></td></tr></table></figure>
 <ul>
-<li><h4 id="mutable-存储类"><a href="#mutable-存储类" class="headerlink" title="mutable 存储类"></a><strong>mutable 存储类</strong></h4></li>
+<li><h4 id="mutable-存储类"><a href="#mutable-存储类" class="headerlink" title="mutable 存储类"></a><strong>mutable 存储类</strong></h4><pre><code>**mutable** 说明符仅适用于类的对象，这将在本教程的最后进行讲解。它允许对象的成员替代常量。也就是说，mutable 成员可以通过 const 成员函数修改。
+</code></pre></li>
 </ul>
-<p>​    <strong>mutable</strong> 说明符仅适用于类的对象，这将在本教程的最后进行讲解。它允许对象的成员替代常量。也就是说，mutable 成员可以通过 const 成员函数修改。</p>
 <ul>
-<li><h4 id="thread-local-存储类"><a href="#thread-local-存储类" class="headerlink" title="thread_local 存储类"></a><strong>thread_local 存储类</strong></h4></li>
+<li><h4 id="thread-local-存储类"><a href="#thread-local-存储类" class="headerlink" title="thread_local 存储类"></a><strong>thread_local 存储类</strong></h4><pre><code>使用 thread_local 说明符声明的变量仅可在它在其上创建的线程上访问。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。thread_local 说明符可以与 static 或 extern 合并。
+
+可以将 thread_local 仅应用于数据声明和定义，thread_local 不能用于函数声明或定义。
+</code></pre></li>
 </ul>
-<p>​    使用 thread_local 说明符声明的变量仅可在它在其上创建的线程上访问。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。thread_local 说明符可以与 static 或 extern 合并。</p>
-<p>​    可以将 thread_local 仅应用于数据声明和定义，thread_local 不能用于函数声明或定义。</p>
 <p>以下演示了可以被声明为 thread_local 的变量：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">thread_local</span> <span class="keyword">int</span> x;  <span class="comment">// 命名空间下的全局变量</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">thread_local</span> <span class="built_in">std</span>::<span class="built_in">string</span> s; <span class="comment">// 类的static成员变量</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">thread_local</span> <span class="built_in">std</span>::<span class="built_in">string</span> X::s;  <span class="comment">// X::s 是需要定义的</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">thread_local</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;  <span class="comment">// 本地变量</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ol>
@@ -496,6 +502,11 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Derived *p=<span class="keyword">new</span> Derived; <span class="comment">//先释放派生类，再释放基类</span></span><br><span class="line">Base *p=<span class="keyword">new</span> Derived; <span class="comment">//只删除基类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">virtual</span> ~Base()&#123;&#125;；</span><br><span class="line">Base *p=<span class="keyword">new</span> Derived <span class="comment">//先删除派生类，再释放基类</span></span><br></pre></td></tr></table></figure>
 <p>​    纯虚函数声明如下： virtual void funtion1()=0; 纯虚函数一定没有定义，纯虚函数用来规范派生类的行为，即接口。包含纯虚函数的类是抽象类，抽象类不能定义实例，但可以声明指向实现该抽象类的具体类的指针或引用。</p>
+<p>注意：虚继承</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>&#123;</span></span><br><span class="line">   <span class="keyword">public</span>:    Person()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"Person构造"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">           ~Person()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"Person析构"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> Person&#123;</span><br><span class="line">   <span class="keyword">public</span>:    Teacher()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"Teacher构造"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">            ~Teacher()&#123; out&lt;&lt;<span class="string">"Teacher析构"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> :</span> <span class="keyword">virtual</span> <span class="keyword">public</span> Person&#123;</span><br><span class="line">  <span class="keyword">public</span>:      Student()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"Student构造"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">             ~Student()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"Student析构"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TS</span> :</span> <span class="keyword">public</span> Teacher,  <span class="keyword">public</span> Student&#123;</span><br><span class="line"><span class="keyword">public</span>:            TS()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"TS构造"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">                 ~TS()&#123; <span class="built_in">cout</span>&lt;&lt;<span class="string">"TS析构"</span>&lt;&lt;ENDL; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">TS ts;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码的终端输出结果为：<br><strong>Person构造</strong><br>Teacher构造<br>Student构造<br>TS构造<br>TS析构<br>Student析构<br>Teacher析构<br>Person析构</p>
+<p>当Teacher类和Student类没有虚继承Person类的时候，也就是把virtual去掉时候终端输出的结果为：<br><strong>Person构造</strong><br>Teacher构造<br><strong>Person构造</strong><br>Student构造<br>TS构造<br>TS析构<br>Student析构<br>Person析构<br>Teacher析构<br>Person析构</p>
+<p>​     大家可以很清楚的看到这个结果明显不是我们所期望的。我们在构造TS的时候需要先构造他的基类，也就是Teacher类和Student类。而Teacher类和Student类由都继承于Person类。这样就导致了构造TS的时候实例化了两个Person类。同样的道理，析构的时候也是析构了两次Person类，这是非常危险的，也就引发出了virtual的第三种用法，虚析构。</p>
 <ol>
 <li><h3 id="注意数据抽象，数据封装，数据接口的表达"><a href="#注意数据抽象，数据封装，数据接口的表达" class="headerlink" title="注意数据抽象，数据封装，数据接口的表达"></a>注意数据抽象，数据封装，数据接口的表达</h3><ul>
 <li><p>数据抽象：仅向用户暴露接口而把具体的实现细节隐藏起来的机制。</p>
@@ -541,7 +552,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/20/Linux线程/" rel="next" title="Linux线程">
+              <a href="/2018/03/20/unp/Linux线程/" rel="next" title="Linux线程">
                 <i class="fa fa-chevron-left"></i> Linux线程
               </a>
             
@@ -551,7 +562,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/13/剑指offer/" rel="prev" title="剑指offer">
+              <a href="/2018/04/13/面试/剑指offer/" rel="prev" title="剑指offer">
                 剑指offer <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -636,7 +647,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -647,7 +658,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
