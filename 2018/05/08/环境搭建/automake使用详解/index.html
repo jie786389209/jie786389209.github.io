@@ -108,10 +108,12 @@
 <meta property="og:site_name" content="热雪的博客">
 <meta property="og:description" content="​    作为Linux下的程序开发人员,大家一定都遇到过Makefile,用make命令来编译自己写的程序确实是很方便.一般情况下,大家都是手工写一个简单Makefile,如果要想写出一个符合自由软件惯例的Makefile就不那么容易了. ​    在本文中,将给大家介绍如何使用autoconf和automake两个工具来帮助我们自动地生成符合自由软件惯例的 Makefile,这样就可以象常见的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-08T15:28:02.504Z">
+<meta property="og:image" content="http://yoursite.com/image/autoconfig/config.PNG">
+<meta property="og:updated_time" content="2018-05-08T15:52:43.858Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="automake使用详解">
 <meta name="twitter:description" content="​    作为Linux下的程序开发人员,大家一定都遇到过Makefile,用make命令来编译自己写的程序确实是很方便.一般情况下,大家都是手工写一个简单Makefile,如果要想写出一个符合自由软件惯例的Makefile就不那么容易了. ​    在本文中,将给大家介绍如何使用autoconf和automake两个工具来帮助我们自动地生成符合自由软件惯例的 Makefile,这样就可以象常见的">
+<meta name="twitter:image" content="http://yoursite.com/image/autoconfig/config.PNG">
 
 
 
@@ -377,6 +379,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aclocal; autoconf; automake --add-missing; ./configure; make; ./helloworld</span><br></pre></td></tr></table></figure>
 <p>　　就可以看到Makefile被产生出来,而且可以将helloworld.c编译通过.</p>
 <p>　　很简单吧,几条命令就可以做出一个符合惯例的 Makefile,感觉如何呀.</p>
+<p><img src="\image\autoconfig\config.PNG" alt=""></p>
 <p>　　<strong>现在 开始介绍详细的 过程：</strong></p>
 <p><strong>1.建目录</strong></p>
 <p>　　在 你的 工作目录下建一个helloworld目录,我们用它来存放helloworld程序及相关文件,如在 /home/my/build下：</p>
@@ -464,7 +467,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/06/unp/TCP客户-服务器程序示例/" rel="next" title="TCP客户/服务器程序示例">
+              <a href="/2018/05/06/unpv/TCP客户-服务器程序示例/" rel="next" title="TCP客户/服务器程序示例">
                 <i class="fa fa-chevron-left"></i> TCP客户/服务器程序示例
               </a>
             
@@ -473,6 +476,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/unpv/客户端程序设计范式/" rel="prev" title="客户端程序设计范式">
+                客户端程序设计范式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -555,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -566,7 +573,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -577,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
