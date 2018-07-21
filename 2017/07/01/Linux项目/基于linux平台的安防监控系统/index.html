@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="热雪的博客">
 <meta property="og:description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://anfang/mjpg.png">
+<meta property="og:image" content="http://yoursite.com/anfang/mjpg.png">
 <meta property="og:image" content="http://anfang/linux监控器硬件.png">
 <meta property="og:image" content="http://anfang/毕设硬件.png">
 <meta property="og:image" content="http://anfang/毕设软件框架.png">
@@ -121,11 +121,11 @@
 <meta property="og:image" content="http://anfang/毕设网页代码.png">
 <meta property="og:image" content="http://anfang/毕设效果.png">
 <meta property="og:image" content="http://anfang/毕设效果图2.png">
-<meta property="og:updated_time" content="2018-07-21T14:58:40.190Z">
+<meta property="og:updated_time" content="2018-07-21T16:42:40.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于linux平台的安防监控系统">
 <meta name="twitter:description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
-<meta name="twitter:image" content="http://anfang/mjpg.png">
+<meta name="twitter:image" content="http://yoursite.com/anfang/mjpg.png">
 
 
 
@@ -387,7 +387,7 @@
 <p>​    JPEG有几种模式，其中最常用的是基本系统，它是基于DCT变换的顺序型模式。JPEG使用的颜色是YUV格式。Y分量代表亮度，U和V分量代表了色差信号息，只用Y分量就能全部表示出一幅灰度图。而当同时考虑U、V分量时，就能够表示彩色图像，通过这样就可很方便的在灰和彩之间切换。在转化为YUV格式后，将图像分割成若干8*8的点阵，并对每一点阵进行DCT算法变换。经过变换后，低频分量都集中在左上角，高频分量分布在右下角。</p>
 <p>​    其中第一行第一列代表了直流(DC)系数，代表着子块的平均值，要对它进行独立编码处理。由于两个相邻的子块的DC系数相差很小，所以对它们DC系数的差值进行编码来提高压缩比。8*8的其他63个元素是交流(AC)系数，采用行程编码。为了保证低频分量先出现，高频分量后出现，以增加行程中连续0的个数，对这63个元素采用z字型排序方法，上面的处理结果得到了DC码字和AC行程码字，如果为了使压缩比得到提高，需要对其再进行熵编码，此时要用霍夫曼编码压缩技术。</p>
 <h2 id="3-Mjpg-streamer的简介"><a href="#3-Mjpg-streamer的简介" class="headerlink" title="3.Mjpg-streamer的简介"></a>3.Mjpg-streamer的简介</h2><h3 id="3-1-软件总结构"><a href="#3-1-软件总结构" class="headerlink" title="3.1 软件总结构"></a>3.1 软件总结构</h3><p>​    Mjpg-streamer采用模块化设计方法，以模块为单位进行功能的设计和行为的描述，这些功能模块被称作组件(plugins)，其架构主要分为三大部分：主线程mjpg—streamer.c，输入组件input和输出组件output。</p>
-<p><img src="\\anfang\mjpg.png" alt=""></p>
+<p><img src="\anfang\mjpg.png" alt=""></p>
 <h3 id="3-2-相关组件介绍"><a href="#3-2-相关组件介绍" class="headerlink" title="3.2 相关组件介绍"></a>3.2 相关组件介绍</h3><p>​    Mjpg—streamer的组件分为输入组件input和输出组件output，程序中定义好了各个组件之间的输入、输出以及组件之间的衔接关系，用户可以根据自身需求很方便地选择、删改所需的模块，自己构建出所需功能的系统。目前来说，Mjpg-streamer最常用的输入组件为针对UVC(USB video class)摄像头的input_uvc，输出组件为output_http。根据这点本系统相应获取模块构建符合特定功能的系统。</p>
 <p>​    input_uvc输入组件主要完成的工作是获取摄像头的图片并将其进行压缩编码，共包括5个组件接口函数与其他接口衔接。Input_run函数是输入通道的运行函数，利用pthread_create函数创建工作线程，调用cam_thread抓取摄像头采集的一帧图像并进行格式转化，等待线程执行完毕后，调用pthread_detach函数回收线程资源。</p>
 <p>​    output_http输出组件主要完成的工作为创建http服务器线程、以 socket套接字形式将视频数据发送出去，并创建客户端线程、定义服务器对客户端请求的响应。服务器线程server—thread被定义在httpd.c中，由output_http.c的output_run函数创建，作用是打开一个TCP socket套接字并等待客户端连接。如有客户端连接，则为每一个连接到服务器的客户端创建一个client—thread，服务于该客户端，设置可同时监听10个 客户端。客户端线程client—thread的主要工作为接收客户端发送的请求并进行解析，根据请求类型作出相应操作。</p>
