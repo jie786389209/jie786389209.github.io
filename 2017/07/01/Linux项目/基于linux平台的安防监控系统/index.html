@@ -109,23 +109,23 @@
 <meta property="og:site_name" content="热雪的博客">
 <meta property="og:description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/anfang/mjpg.png">
-<meta property="og:image" content="http://anfang/linux监控器硬件.png">
-<meta property="og:image" content="http://anfang/毕设硬件.png">
-<meta property="og:image" content="http://anfang/毕设软件框架.png">
-<meta property="og:image" content="http://anfang/毕设工作流程.png">
-<meta property="og:image" content="http://anfang/毕设移植.png">
-<meta property="og:image" content="http://anfang/毕设移植2.png">
-<meta property="og:image" content="http://anfang/毕设环境搭建.png">
-<meta property="og:image" content="http://anfang/毕设网页.png">
-<meta property="og:image" content="http://anfang/毕设网页代码.png">
-<meta property="og:image" content="http://anfang/毕设效果.png">
-<meta property="og:image" content="http://anfang/毕设效果图2.png">
-<meta property="og:updated_time" content="2018-07-21T16:42:40.458Z">
+<meta property="og:image" content="http://yoursite.com/image/anfang/mjpg.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/linux监控器硬件.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设硬件.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设软件框架.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设工作流程.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设移植.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设移植2.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设环境搭建.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设网页.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设网页代码.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设效果.png">
+<meta property="og:image" content="http://yoursite.com/image/anfang/毕设效果图2.png">
+<meta property="og:updated_time" content="2018-07-21T16:48:10.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于linux平台的安防监控系统">
 <meta name="twitter:description" content="一、项目概况​    本研究搭建Linux作为开发平台，并在以CortexTM-A8为内核的s5pv210处理器上构建嵌入式Linux系统。系统上面移植了JPEG库和MJPG-streamer流媒体服务器，建立嵌入式Linux的web服务器。此外，本系统还对MJPG-streamer流媒体服务器进行了二次开发，实现了摄像头对图像数据的采集、压缩、传输和显示。显示部分使用Dreamweaver开发用">
-<meta name="twitter:image" content="http://yoursite.com/anfang/mjpg.png">
+<meta name="twitter:image" content="http://yoursite.com/image/anfang/mjpg.png">
 
 
 
@@ -387,16 +387,16 @@
 <p>​    JPEG有几种模式，其中最常用的是基本系统，它是基于DCT变换的顺序型模式。JPEG使用的颜色是YUV格式。Y分量代表亮度，U和V分量代表了色差信号息，只用Y分量就能全部表示出一幅灰度图。而当同时考虑U、V分量时，就能够表示彩色图像，通过这样就可很方便的在灰和彩之间切换。在转化为YUV格式后，将图像分割成若干8*8的点阵，并对每一点阵进行DCT算法变换。经过变换后，低频分量都集中在左上角，高频分量分布在右下角。</p>
 <p>​    其中第一行第一列代表了直流(DC)系数，代表着子块的平均值，要对它进行独立编码处理。由于两个相邻的子块的DC系数相差很小，所以对它们DC系数的差值进行编码来提高压缩比。8*8的其他63个元素是交流(AC)系数，采用行程编码。为了保证低频分量先出现，高频分量后出现，以增加行程中连续0的个数，对这63个元素采用z字型排序方法，上面的处理结果得到了DC码字和AC行程码字，如果为了使压缩比得到提高，需要对其再进行熵编码，此时要用霍夫曼编码压缩技术。</p>
 <h2 id="3-Mjpg-streamer的简介"><a href="#3-Mjpg-streamer的简介" class="headerlink" title="3.Mjpg-streamer的简介"></a>3.Mjpg-streamer的简介</h2><h3 id="3-1-软件总结构"><a href="#3-1-软件总结构" class="headerlink" title="3.1 软件总结构"></a>3.1 软件总结构</h3><p>​    Mjpg-streamer采用模块化设计方法，以模块为单位进行功能的设计和行为的描述，这些功能模块被称作组件(plugins)，其架构主要分为三大部分：主线程mjpg—streamer.c，输入组件input和输出组件output。</p>
-<p><img src="\anfang\mjpg.png" alt=""></p>
+<p><img src="\image\anfang\mjpg.png" alt=""></p>
 <h3 id="3-2-相关组件介绍"><a href="#3-2-相关组件介绍" class="headerlink" title="3.2 相关组件介绍"></a>3.2 相关组件介绍</h3><p>​    Mjpg—streamer的组件分为输入组件input和输出组件output，程序中定义好了各个组件之间的输入、输出以及组件之间的衔接关系，用户可以根据自身需求很方便地选择、删改所需的模块，自己构建出所需功能的系统。目前来说，Mjpg-streamer最常用的输入组件为针对UVC(USB video class)摄像头的input_uvc，输出组件为output_http。根据这点本系统相应获取模块构建符合特定功能的系统。</p>
 <p>​    input_uvc输入组件主要完成的工作是获取摄像头的图片并将其进行压缩编码，共包括5个组件接口函数与其他接口衔接。Input_run函数是输入通道的运行函数，利用pthread_create函数创建工作线程，调用cam_thread抓取摄像头采集的一帧图像并进行格式转化，等待线程执行完毕后，调用pthread_detach函数回收线程资源。</p>
 <p>​    output_http输出组件主要完成的工作为创建http服务器线程、以 socket套接字形式将视频数据发送出去，并创建客户端线程、定义服务器对客户端请求的响应。服务器线程server—thread被定义在httpd.c中，由output_http.c的output_run函数创建，作用是打开一个TCP socket套接字并等待客户端连接。如有客户端连接，则为每一个连接到服务器的客户端创建一个client—thread，服务于该客户端，设置可同时监听10个 客户端。客户端线程client—thread的主要工作为接收客户端发送的请求并进行解析，根据请求类型作出相应操作。</p>
 <h2 id="4-核心板S5PV210简介"><a href="#4-核心板S5PV210简介" class="headerlink" title="4. 核心板S5PV210简介"></a>4. 核心板S5PV210简介</h2><p>​    S5PV210是一款适用于智能手机和平板电脑等多媒体设备的应用处理器。S5PV210采用了ARM CortexTM-A8内核，ARM V7指令集，主频可达1GHZ，64/32位内部总线结构，32/32KB的数据/指令一级缓存，512KB的二级缓存，可以实现2000DMIPS（每秒运算2亿条指令集）的高性能运算能力。其中，DDR2 RAM为512M,NAND Flash为512M。CPU芯片及其模块构成的核心板具有体积小，耗电低，处理能力强等特点，能够移植和运行嵌入式Linux系统。</p>
 <p>​    此外，S5PV210包含很多强大的硬件编解码功能，支持MPEG-1/2/4，JPEG硬件编解码，最大支持8000x8000分辨率，具有出色的图形解码性能，支持全高清、多标准的视频编码，流畅播放和录制30帧/秒的1920×1080像素（1080p）的视频文件，可以更快解码更高质量的图像和视频。用户可以根据所需在该核心板上扩展外围电路设计。</p>
-<h1 id="三、硬件设计"><a href="#三、硬件设计" class="headerlink" title="三、硬件设计"></a>三、硬件设计</h1><p><img src="\\anfang\linux监控器硬件.png" alt=""></p>
-<p><img src="\\anfang\毕设硬件.png" alt=""></p>
-<h1 id="四、软件设计"><a href="#四、软件设计" class="headerlink" title="四、软件设计"></a>四、软件设计</h1><h2 id="4-1-软件框架"><a href="#4-1-软件框架" class="headerlink" title="4.1 软件框架"></a>4.1 软件框架</h2><p><img src="\\anfang\毕设软件框架.png" alt=""></p>
-<h2 id="4-2-软件工作流程"><a href="#4-2-软件工作流程" class="headerlink" title="4.2 软件工作流程"></a>4.2 软件工作流程</h2><p><img src="\\anfang\毕设工作流程.png" alt=""></p>
+<h1 id="三、硬件设计"><a href="#三、硬件设计" class="headerlink" title="三、硬件设计"></a>三、硬件设计</h1><p><img src="\image\anfang\linux监控器硬件.png" alt=""></p>
+<p><img src="\image\anfang\毕设硬件.png" alt=""></p>
+<h1 id="四、软件设计"><a href="#四、软件设计" class="headerlink" title="四、软件设计"></a>四、软件设计</h1><h2 id="4-1-软件框架"><a href="#4-1-软件框架" class="headerlink" title="4.1 软件框架"></a>4.1 软件框架</h2><p><img src="\image\anfang\毕设软件框架.png" alt=""></p>
+<h2 id="4-2-软件工作流程"><a href="#4-2-软件工作流程" class="headerlink" title="4.2 软件工作流程"></a>4.2 软件工作流程</h2><p><img src="\image\anfang\毕设工作流程.png" alt=""></p>
 <p>​    JPEG是通用的数据压缩算法库，本系统打算用该库作为数据压缩。而MJPG-Streamer是成熟的流媒体软件。移植后并作二次开发，软件的流程按照图片的采集、压缩、传输、显示的步骤设计。JPEG提供图像数据压缩和解压缩算法，mjpeg-streamer在包含jpeg的基础上，使用dlopen()打开插件，通过dlsym()获取相关函数。而在input_init()中对摄像头和V4L2驱动进行初始化，确定摄像头的输出参数和串口的配置参数。Intpt_run()创建图像的采集线程，该线程抓取图像后判断是否为正常，若正常再判断是否进行格式转化，最后复制到缓冲区并更新数据帧。Output_run()创建客户服务线程，若有客户端连接，则启动客户线程,客户以TCP方式来发送图像到浏览器。</p>
 <h2 id="4-3-Jpeg和mjpg-stream软件移植"><a href="#4-3-Jpeg和mjpg-stream软件移植" class="headerlink" title="4.3 Jpeg和mjpg-stream软件移植"></a>4.3 Jpeg和mjpg-stream软件移植</h2><h3 id="4-3-1-JPEG库移植"><a href="#4-3-1-JPEG库移植" class="headerlink" title="4.3.1 JPEG库移植"></a>4.3.1 JPEG库移植</h3><p>​    JPEG的代码已经十分成熟，JPEG的算法被确定为国际通用标准。JPEG有多种编码和压缩方式。在实际应用中，JPEG图像使用的是离散余弦变换、哈夫曼编码，顺序模式。下载了JPEG的编解码库后，先看看源码里面自带的libjpeg.doc文件和readme了解框架结构，选取部分代码即可获取完整的图像操作。</p>
 <p>​    以下是JPEG<strong>编码库</strong>的工作流程：</p>
@@ -419,21 +419,21 @@
 <p>②修改$(CC) $(CFLAGS) -ljpeg -o $@ input_uvc.c v4l2uvc.lo jpeg_utils.lo dynctrl.lo            <strong>为</strong></p>
 <p>   $(CC) $(CFLAGS) -ljpeg -L/home/jpeg-6b/jpeg/lib -o $@ input_uvc.c v4l2uvc.lo jpeg_utils.lo dynctrl.lo</p>
 <p>上面的过程就是将jpeg的库包含在mjpg-streamer的编译环境中，使两者对着这种依赖关系编译。接着使用命令make CC=arm-linux-gcc编译后，将系统产生的后缀为.so的可执行文件、mjpg-stream、start.sh和之前设计好的网页文件夹www一同放到/home/mjpg目录下，到此为止，jpeg和mjpg-stream的搭建已完毕。如图：</p>
-<p><img src="\\anfang\毕设移植.png" alt=""></p>
-<p><img src="\\anfang\毕设移植2.png" alt=""></p>
-<h1 id="五、环境搭建"><a href="#五、环境搭建" class="headerlink" title="五、环境搭建"></a>五、环境搭建</h1><p><img src="\\anfang\毕设环境搭建.png" alt=""></p>
+<p><img src="\image\anfang\毕设移植.png" alt=""></p>
+<p><img src="\image\anfang\毕设移植2.png" alt=""></p>
+<h1 id="五、环境搭建"><a href="#五、环境搭建" class="headerlink" title="五、环境搭建"></a>五、环境搭建</h1><p><img src="\image\anfang\毕设环境搭建.png" alt=""></p>
 <p>​    启动目标板第一次加电时,目标板上的引导加载程序U-Boot立即获得处理器的控制权。该程序执行一些非常底层的硬件初始化，包括CPU处理器和内存管理设置，初始化UART来进行串行端口的格式控制，以及初始化以太网控制器来控制网络传输。</p>
 <p>​    初始化硬件后，U-Boot加载并引导Linux内核，所有的引导加载程序都提供了命令用于加载和执行操作系统镜像。使用git下载内核代码，主流的Linux都带有git，使用命令$ sudo apt-get install git-corek而已下载安装git，然后使用git命令git clone来从Linux内核源码官网下载内核代码。本系统根据所用的内核和功能相应的配置config工具，接着编译内核生成镜像文件，然后加工成启动程序并启动后，Linux会挂载一个根文件系统。可以通过以太网挂载其根文件系统，之后登陆进系统后会进入用户空间，此时用户空间进程对系统的访问受限，必须使用内核系统调用来请求内核服务，比如设备和文件I/O。到此为此，Linux的环境框架搭建完毕。</p>
 <h1 id="六、网页设计"><a href="#六、网页设计" class="headerlink" title="六、网页设计"></a>六、网页设计</h1><p>网页采用dreamwaver软件来设计，它是对网页进行视觉化开发的软件编程工具，使用它可以制作出丰富且动感，交互性良好的的网页界面。本系统是个监控系统，只需要设计出监控界面和部分参数调试按钮即可。系统的总文件如图：</p>
-<p>​       <img src="\\anfang\毕设网页.png" alt=""></p>
+<p>​       <img src="\image\anfang\毕设网页.png" alt=""></p>
 <p>​    其中control和stream是html文件，stream对应视频栏，control对应控制栏，fix和style为字体和框架的属性设置。这几个文件放在一个叫www的文件夹中，以便后续的项目所需。</p>
-<p>​      <img src="\\anfang\毕设网页代码.png" alt="">   </p>
+<p>​      <img src="\image\anfang\毕设网页代码.png" alt="">   </p>
 <h1 id="七、效果图"><a href="#七、效果图" class="headerlink" title="七、效果图"></a>七、效果图</h1><p>测试工具:一台笔记本电脑，IE浏览器（或火狐浏览器），一根网线，UART串口线和超级终端。</p>
 <p>测试方案：网线和串口线与笔记本计算机和嵌入式开发板连接起来，通过超级终端连接Linux系统，进入目标目录运行程序。在这里运行start.sh，其内部其实就是运export LD_LIBRARY_PATH=”$(pwd)”   </p>
 <p> ./mjpg_streamer -o “output_http.so -w ./www”，其pwd为运行的当前路径，通过ldopen（）来寻找.so文件模型。当然，start.sh内部还定义各种操作方法，经过各种调试手段来获取理想的配置输出效果，本系统在这里运行基础命令即可运行出较为满意的效果。然后打开笔记本自带的ie浏览器，输入以下网址<a href="http://www.192.168.1.230:8080/mystream.html就会看到自己设计的界面。控制按钮还可以做到调节视频的亮度等功能。" target="_blank" rel="noopener">http://www.192.168.1.230:8080/mystream.html就会看到自己设计的界面。控制按钮还可以做到调节视频的亮度等功能。</a>    </p>
 <p>连接结果如下图，表明摄像头正常工作：</p>
-<p><img src="\\anfang\毕设效果.png" alt=""></p>
-<p><img src="\\anfang\毕设效果图2.png" alt=""></p>
+<p><img src="\image\anfang\毕设效果.png" alt=""></p>
+<p><img src="\image\anfang\毕设效果图2.png" alt=""></p>
 <p>该系统也存在一些缺陷：   </p>
 <p>①摄像头的像素可能偏低，如果追求高清画质可以选择高一点像素的摄像头；</p>
 <p>②外加模块不够丰富，s5pv210功能丰富，单做视频有点浪费，相应的可以再添加一些其他的模块，比如烟雾传感等智能家居要素，使系统功能更丰富；</p>
