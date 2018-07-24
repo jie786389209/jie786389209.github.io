@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、最近邻最近邻方法背后的原理是从训练样本中找到与新点在距离上最近的预定数量的几个点，然后从这些点中预测标签。 这些点的数量可以是用户自定义的常量（K-最近邻学习）， 也可以根据不同的点的局部密度（基于半径的最近邻学习）。  距离通常可以通过任何度量来衡量： standard Euclidean distance（标准欧式距离）是最常见的选择。Neighbors-based（基于邻居的）方法被称为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最近邻">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/最近邻/index.html">
+<meta property="og:site_name" content="热雪的博客">
+<meta property="og:description" content="一、最近邻最近邻方法背后的原理是从训练样本中找到与新点在距离上最近的预定数量的几个点，然后从这些点中预测标签。 这些点的数量可以是用户自定义的常量（K-最近邻学习）， 也可以根据不同的点的局部密度（基于半径的最近邻学习）。  距离通常可以通过任何度量来衡量： standard Euclidean distance（标准欧式距离）是最常见的选择。Neighbors-based（基于邻居的）方法被称为">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/KNN/KNC1.PNG">
+<meta property="og:image" content="http://yoursite.com/image/KNN/KNR.PNG">
+<meta property="og:image" content="http://sklearn.apachecn.org/cn/0.19.0/_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png">
+<meta property="og:image" content="http://sklearn.apachecn.org/cn/0.19.0/_images/math/3cf5aa5abe312e6fd4996975341a43aa566e8d8d.png">
+<meta property="og:image" content="http://yoursite.com/image/KNN/KD.png">
+<meta property="og:image" content="http://yoursite.com/image/KNN/KD1.png">
+<meta property="og:updated_time" content="2018-07-24T15:00:09.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最近邻">
+<meta name="twitter:description" content="一、最近邻最近邻方法背后的原理是从训练样本中找到与新点在距离上最近的预定数量的几个点，然后从这些点中预测标签。 这些点的数量可以是用户自定义的常量（K-最近邻学习）， 也可以根据不同的点的局部密度（基于半径的最近邻学习）。  距离通常可以通过任何度量来衡量： standard Euclidean distance（标准欧式距离）是最常见的选择。Neighbors-based（基于邻居的）方法被称为">
+<meta name="twitter:image" content="http://yoursite.com/image/KNN/KNC1.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/最近邻/"/>
+
+
+
+
+
+  <title>最近邻 | 热雪的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">热雪的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/最近邻/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/07/21/5b5347273dca4.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="热雪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">最近邻</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T22:03:41+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、最近邻"><a href="#一、最近邻" class="headerlink" title="一、最近邻"></a>一、最近邻</h3><p>最近邻方法背后的原理是从训练样本中找到与新点在距离上最近的预定数量的几个点，然后从这些点中预测标签。 这些点的数量可以是用户自定义的常量（<strong>K-最近邻学习</strong>）， 也可以根据不同的点的局部密度（<strong>基于半径的最近邻学习</strong>）。 </p>
+<p>距离通常可以通过任何度量来衡量： standard Euclidean distance（标准<strong>欧式距离</strong>）是最常见的选择。Neighbors-based（基于邻居的）方法被称为 <em>非泛化</em> 机器学习方法， 因为它们只是简单地”记住”了其所有的训练数据（可能转换为一个快速索引结构，如 <a href="http://sklearn.apachecn.org/cn/0.19.0/modules/neighbors.html#ball-tree" target="_blank" rel="noopener">Ball Tree</a> 或 <a href="http://sklearn.apachecn.org/cn/0.19.0/modules/neighbors.html#kd-tree" target="_blank" rel="noopener">KD Tree</a>）。 </p>
+<h3 id="二、最近邻分类"><a href="#二、最近邻分类" class="headerlink" title="二、最近邻分类"></a>二、最近邻分类</h3><p>1、<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.KNeighborsClassifier.html#sklearn.neighbors.KNeighborsClassifier" target="_blank" rel="noopener"><code>KNeighborsClassifier</code></a> ：</p>
+<p>通常<strong>较大的 k 是会抑制噪声</strong>的影响，但是使得分类界限不明显。</p>
+<p>如果数据是<strong>不均匀采样</strong>的，那么 RNC中的基于半径的近邻分类可能是更好的选择。 </p>
+<p>2、<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.RadiusNeighborsClassifier.html#sklearn.neighbors.RadiusNeighborsClassifier" target="_blank" rel="noopener"><code>RadiusNeighborsClassifier</code></a> :</p>
+<p>用户指定一个固定半径 r ，使得<strong>稀疏邻居</strong>中的点使用较少的最近邻来分类。 </p>
+<p>对于高维参数空间，这个方法会由于所谓的 “维度灾难” 而变得不那么有效。 </p>
+<hr>
+<blockquote>
+<p>基本的最近邻分类使用统一的<strong>权重</strong>：分配给查询点的值是从最近邻的简单多数投票中计算出来的。 在某些环境下，最好对邻居进行加权，使得更近邻更有利于拟合。可以通过 <code>weights</code> 关键字来实现。 </p>
+<p>默认值 <code>weights = &#39;uniform&#39;</code> 为每个近邻分配统一的权重。而 <code>weights = &#39;distance&#39;</code> 分配权重与查询点的距离成反比。</p>
+<p> 或者，用户可以自定义一个距离函数用来计算权重。</p>
+</blockquote>
+<p> <img src="/image/KNN/KNC1.PNG" alt=""></p>
+<h3 id="三、最近邻回归"><a href="#三、最近邻回归" class="headerlink" title="三、最近邻回归"></a>三、最近邻回归</h3><p>最近邻回归是用在数据标签为<strong>连续变量</strong>，而不是离散变量的情况下。分配给查询点的标签是由它的最近邻标签的均值计算而来的。 </p>
+<p>1、<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.KNeighborsRegressor.html#sklearn.neighbors.KNeighborsRegressor" target="_blank" rel="noopener"><code>KNeighborsRegressor</code></a> </p>
+<p>2、<a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.RadiusNeighborsRegressor.html#sklearn.neighbors.RadiusNeighborsRegressor" target="_blank" rel="noopener"><code>RadiusNeighborsRegressor</code></a> </p>
+<p><img src="/image/KNN/KNR.PNG" alt=""></p>
+<h3 id="四、最近邻算法"><a href="#四、最近邻算法" class="headerlink" title="四、最近邻算法"></a>四、最近邻算法</h3><h4 id="1、暴力计算"><a href="#1、暴力计算" class="headerlink" title="1、暴力计算"></a>1、暴力计算</h4><p>对于 D 维度中的 N 个样本来说, 这个方法的复杂度是 O[DN^2]。  </p>
+<p>对于<strong>小数据样本</strong>，高效的暴力近邻搜索是非常有竞争力的。 然而，随着样本数 <img src="http://sklearn.apachecn.org/cn/0.19.0/_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"> 的增长，暴力方法很快变得不切实际了。 </p>
+<h4 id="2、K-D树"><a href="#2、K-D树" class="headerlink" title="2、K-D树"></a>2、K-D树</h4><p>对于 D 维度中的 N 个样本来说, 这个方法的复杂度是 O[DNlog(N)] 或更低。</p>
+<p>D 树的方法对于<strong>低维度 （D&lt;20），近邻搜索非常快</strong>, 当 <img src="http://sklearn.apachecn.org/cn/0.19.0/_images/math/3cf5aa5abe312e6fd4996975341a43aa566e8d8d.png" alt="D"> 增长到很大时, 效率变低: 这就是所谓的 “维度灾难” 的一种体现。 </p>
+<p><img src="/image/KNN/KD.png" alt=""></p>
+<p><img src="/image/KNN/KD1.png" alt=""></p>
+<h4 id="3、Ball树"><a href="#3、Ball树" class="headerlink" title="3、Ball树"></a>3、Ball树</h4><p>为了<strong>解决 KD 树在高维上效率低下</strong>的问题, ball<em>树</em> 数据结构就被研发出来了 。其中 KD 树沿卡迪尔轴（即坐标轴）分割数据, 树在沿着一系列的 超平面来分割数据。</p>
+<p>通过这种方法构建的树要<strong>比 KD 树消耗更多的时间</strong>,  但是这种数据结构<strong>对于高结构化的数据是非常有效的</strong>, 即使在高维度上也是一样。</p>
+<blockquote>
+<p>如上所述, 对于小样本暴力搜索是比基于数的搜索更有效的方法. 这一事实在 ball 树和 KD 树中被解释为在叶节点内部切换到蛮力搜索. 该开关的级别可以使用参数 <code>leaf_size</code> 来指定. 这个参数选择有很多的效果:</p>
+<ul>
+<li><p><strong>构造时间</strong></p>
+<p>更大的 <code>leaf_size</code> 会导致更快的树构建时间, 因为需要创建更少的节点.</p>
+</li>
+<li><p><strong>查询时间</strong></p>
+<p>一个大或小的 <code>leaf_size</code> 可能会导致次优查询成本. 当 <code>leaf_size</code> 接近 1 时, 遍历节点所涉及的开销大大减慢了查询时间. 当 <code>leaf_size</code>, 接近训练集的大小，查询变得本质上是暴力的. 这些之间的一个很好的妥协是 <code>leaf_size = 30</code>, 这是该参数的默认值.</p>
+</li>
+</ul>
+<p><strong>内存</strong> 随着leaf_size的增加，存储树结构所需的内存减少。 对于存储每个节点的D维质心的ball tree，这点至关重要。 针对 <a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" target="_blank" rel="noopener"><code>BallTree</code></a> 所需的存储空间近似于 <code>1 / leaf_size</code> 乘以训练集的大小.</p>
+<p><code>leaf_size</code> 不被 brute force queries（暴力查询）所引用.</p>
+</blockquote>
+<h3 id="五、最近邻算法的选择"><a href="#五、最近邻算法的选择" class="headerlink" title="五、最近邻算法的选择"></a>五、最近邻算法的选择</h3><p>对于给定数据集的最优算法是一个复杂的选择, 并且取决于多个因素:</p>
+<ul>
+<li><p>样本数量 N(i.e. <code>n_samples</code>) 和维度 D (例如. <code>n_features</code>).</p>
+<p>1、<em>Brute force</em> 查询时间以 O[D N] 增长</p>
+<p>2、Ball tree 查询时间大约以 O[Dlog(N)] 增长</p>
+<p>3、<em>KD tree</em> 的查询时间 D 的变化是很难精确描述的. </p>
+<ul>
+<li><p>对于<strong>较小的 D (小于20)</strong> 的成本大约是 O[Dlog(N)] , 并且 KD 树更加有效.</p>
+</li>
+<li><p>对于较大的 D 成本的增加接近  O[DN],  由于树结构引起的开销会导致查询效率比暴力还要低.</p>
+</li>
+</ul>
+<p>4、对于<strong>小数据集(N小于30)</strong>,   logN  相当于N , 暴力算法比基于树的算法更加有效.</p>
+<p><a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.KDTree.html#sklearn.neighbors.KDTree" target="_blank" rel="noopener"><code>KDTree</code></a> 和 <a href="http://sklearn.apachecn.org/cn/0.19.0/modules/generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree" target="_blank" rel="noopener"><code>BallTree</code></a> 通过提供一个 <em>leaf size</em> 参数来解决这个问题:</p>
+<p>这控制了查询切换到暴力计算样本数量. 使得两种算法的效率都能接近于对较小的 N 的暴力计算的效率.</p>
+</li>
+</ul>
+<ul>
+<li><p>数据结构: 数据的 <em>intrinsic dimensionality</em> (本征维数) 和/或数据的 <em>sparsity</em> (稀疏度). 本征维数是指数据所在的流形的维数d&lt;=D, 在参数空间可以是线性或非线性的. 稀疏度指的是数据填充参数空间的程度(这与“稀疏”矩阵中使用的概念不同, 数据矩阵可能没有零项, 但是从这个意义上来讲,它的 <strong>structure</strong> 仍然是 “稀疏” 的)。</p>
+<ul>
+<li><em>Brute force</em> (暴力查询)时间不受数据结构的影响。</li>
+<li><strong><em>Ball tree</em> 和 <em>KD tree</em> 的数据结构对查询时间影响很大.</strong> 一般地, 小维度的 sparser (稀疏) 数据会使查询更快. 因为 KD 树的内部表现形式是与参数轴对齐的, 对于任意的结构化数据它通常不会表现的像 ball tree 那样好.</li>
+</ul>
+<p>在机器学习中往往使用的数据集是非常结构化的, 而且非常适合基于树结构的查询。</p>
+</li>
+</ul>
+<ul>
+<li><p>query point（查询点）所需的近邻数 k。</p>
+<p>1、<em>Brute force</em> 查询时间几乎不受 k 值的影响.</p>
+<p>2、<em>Ball tree</em> 和 <em>KD tree</em> 的查询时间会随着 k 的增加而变慢. </p>
+<p>这是由于两个影响: 首先 k 的值越大在参数空间中搜索的部分就越大. 其次, 使用 k&gt;1 进行树的遍历时, 需要对内部结果进行排序.</p>
+<p><strong>当 k 相比 N 变大时</strong>, 在基于树的查询中修剪树枝的能力是减弱的. 在这种情况下, 暴力查询会更加有效.</p>
+</li>
+</ul>
+<ul>
+<li><p>query points（查询点）数. </p>
+<p>ball tree 和 KD Tree 都需要一个构建阶段. 在许多查询中分摊时，这种结构的成本可以忽略不计。 如果只执行少量的查询, 可是构建成本却占总成本的很大一部分. 如果仅需查询很少的点, 暴力方法会比基于树的方法更好.</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/24/机器学习/朴素贝叶斯/" rel="next" title="朴素贝叶斯">
+                <i class="fa fa-chevron-left"></i> 朴素贝叶斯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2018/07/21/5b5347273dca4.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description">Winter is coming!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jie786389209" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/weixin_41123612" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、最近邻"><span class="nav-number">1.</span> <span class="nav-text">一、最近邻</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、最近邻分类"><span class="nav-number">2.</span> <span class="nav-text">二、最近邻分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、最近邻回归"><span class="nav-number">3.</span> <span class="nav-text">三、最近邻回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、最近邻算法"><span class="nav-number">4.</span> <span class="nav-text">四、最近邻算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、暴力计算"><span class="nav-number">4.1.</span> <span class="nav-text">1、暴力计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、K-D树"><span class="nav-number">4.2.</span> <span class="nav-text">2、K-D树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Ball树"><span class="nav-number">4.3.</span> <span class="nav-text">3、Ball树</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、最近邻算法的选择"><span class="nav-number">5.</span> <span class="nav-text">五、最近邻算法的选择</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
