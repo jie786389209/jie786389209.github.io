@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="各种优化算法的比较机器学习和深度学习中使用到的优化算法的演化历程如下：   SGD –&amp;gt; Momentum –&amp;gt; Nesterov –&amp;gt; Adagrad –&amp;gt; Adadelta –&amp;gt; Adam –&amp;gt; Nadam     演化过程 原因     SGD –&amp;gt; Momentum 由于SGD在优化过程中容易产生震荡，为减小震荡，Momentum在梯度下降过程中引">
+<meta property="og:type" content="article">
+<meta property="og:title" content="各种优化算法的比较">
+<meta property="og:url" content="http://yoursite.com/2018/07/22/机器学习/各种优化算法的比较/index.html">
+<meta property="og:site_name" content="热雪的博客">
+<meta property="og:description" content="各种优化算法的比较机器学习和深度学习中使用到的优化算法的演化历程如下：   SGD –&amp;gt; Momentum –&amp;gt; Nesterov –&amp;gt; Adagrad –&amp;gt; Adadelta –&amp;gt; Adam –&amp;gt; Nadam     演化过程 原因     SGD –&amp;gt; Momentum 由于SGD在优化过程中容易产生震荡，为减小震荡，Momentum在梯度下降过程中引">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/bgd.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/sgd.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/mini_batch.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/momentum.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/SGD_mom.png">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/nesterov.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/nesterov1.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/adagrad.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/adagrad1.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/adadelta.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/adadelta1.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/Rmspro.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/adam.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/newton.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/newton1.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/newton2.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/newton3.PNG">
+<meta property="og:image" content="http://yoursite.com/image/机器学习/优化算法的比较/newton4.PNG">
+<meta property="og:updated_time" content="2018-07-24T13:52:57.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="各种优化算法的比较">
+<meta name="twitter:description" content="各种优化算法的比较机器学习和深度学习中使用到的优化算法的演化历程如下：   SGD –&amp;gt; Momentum –&amp;gt; Nesterov –&amp;gt; Adagrad –&amp;gt; Adadelta –&amp;gt; Adam –&amp;gt; Nadam     演化过程 原因     SGD –&amp;gt; Momentum 由于SGD在优化过程中容易产生震荡，为减小震荡，Momentum在梯度下降过程中引">
+<meta name="twitter:image" content="http://yoursite.com/image/机器学习/优化算法的比较/bgd.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/22/机器学习/各种优化算法的比较/"/>
+
+
+
+
+
+  <title>各种优化算法的比较 | 热雪的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">热雪的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/./" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/22/机器学习/各种优化算法的比较/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/07/21/5b5347273dca4.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="热雪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">各种优化算法的比较</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-22T00:19:47+08:00">
+                2018-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="各种优化算法的比较"><a href="#各种优化算法的比较" class="headerlink" title="各种优化算法的比较"></a><strong>各种优化算法的比较</strong></h2><p>机器学习和深度学习中使用到的优化算法的演化历程如下：  </p>
+<p>SGD –&gt; Momentum –&gt; Nesterov –&gt; Adagrad –&gt; Adadelta –&gt; Adam –&gt; Nadam </p>
+<table>
+<thead>
+<tr>
+<th>演化过程</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SGD –&gt; Momentum</td>
+<td>由于SGD在优化过程中容易产生震荡，为减小震荡，Momentum在梯度下降过程中引入了动量，使之具有惯性</td>
+</tr>
+<tr>
+<td>Momentum –&gt; Nesterov</td>
+<td>对梯度项进行矫正，使梯度下降方向由积累的动量和假设走到下一步的梯度两部分决定的</td>
+</tr>
+<tr>
+<td>Nesterov –&gt; Adagrad</td>
+<td>Adagrad中引入二阶动量，使之能够自适应调节学习率</td>
+</tr>
+<tr>
+<td>Adagrad –&gt; Adadelta</td>
+<td>由于Adagrad 使用了之前所有梯度的平方，会导致训练到后面梯度为0，因此，在Adadelta中只用前面一段时间的下降梯度的配方</td>
+</tr>
+<tr>
+<td>Adadelta –&gt; Adam</td>
+<td>在梯度更新中，使用了动量，并且能够自适应调节学习率</td>
+</tr>
+<tr>
+<td>Adam –&gt; Nadam</td>
+<td>引入了Nesterov 动量项</td>
+</tr>
+</tbody>
+</table>
+<h3 id="各优化算法的公式和特点"><a href="#各优化算法的公式和特点" class="headerlink" title="各优化算法的公式和特点"></a>各优化算法的公式和特点</h3><h4 id="一、BGD批梯度下降"><a href="#一、BGD批梯度下降" class="headerlink" title="一、BGD批梯度下降"></a>一、BGD批梯度下降</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/bgd.PNG" alt=""></p>
+<p>优点:</p>
+<p>1、cost fuction若为凸函数，能够保证收敛到全局最优值；若为非凸函数，能够收敛到局部最优值</p>
+<p>缺点:</p>
+<p>1、由于每轮迭代都需要在整个数据集上计算一次，所以批量梯度下降可能非常慢</p>
+<p>2、训练数较多时，需要较大内存</p>
+<h4 id="二、SGD随机梯度下降"><a href="#二、SGD随机梯度下降" class="headerlink" title="二、SGD随机梯度下降"></a>二、SGD随机梯度下降</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/sgd.PNG" alt=""></p>
+<p>优点:</p>
+<p>1、算法收敛速度快(在Batch Gradient Descent算法中, 每轮会计算很多相似样本的梯度, 这部分是冗余的)</p>
+<p>2、有几率跳出一个比较差的局部最优而收敛到一个更好的局部最优甚至是全局最优</p>
+<p>缺点:</p>
+<p>1、容易收敛到局部最优，并且容易被困在鞍点</p>
+<p>2、对于非凸问题，只能收敛到局部最优，并且没有任何摆脱局部最优的能力（一旦梯度为0就不会再有任何变化）。 </p>
+<h4 id="三、Mini-batch-Gradient-Descent："><a href="#三、Mini-batch-Gradient-Descent：" class="headerlink" title="三、Mini-batch Gradient Descent："></a>三、Mini-batch Gradient Descent：</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/mini_batch.PNG" alt=""></p>
+<p>优点：</p>
+<p>1、在每轮迭代中仅仅计算一个mini-batch的梯度，不仅计算效率高，而且收敛较为稳定。通常一小批数据含有的样本数量在 50 至 256 之间，但对于不同的用途也会有所变化。 该方法是目前深度学训练中的主流方法</p>
+<p>以上三种方法留下的挑战：<br>1、选择适当的学习率是一个难题。太小的学习率会导致较慢的收敛速度，而太大的学习率则会阻碍收敛，并会引起罚函数在最小值处震荡，甚至有可能导致结果发散； </p>
+<p>2、我们可以设置一个关于学习率地列表，通过如退火的方法，在学习过程中调整学习率——按照一个预先定义的列表、或是当每次迭代中目标函数的变化小于一定阈值时来降低学习率。但这些列表或阈值，需要根据数据集地特性，被提前定义。 </p>
+<p>3、此外，我们对所有的参数都采用了相同的学习率。但如果我们的数据比较稀疏，同时特征有着不同的出现频率，那么我们不希望以相同的学习率来更新这些变量，我们希望对较少出现的特征有更大的学习率。 </p>
+<p>4、深层神经网络之所以比较难训练，并不是因为容易进入local minimum。相反，由于网络结构非常复杂，在绝大多数情况下即使是 local minimum 也可以得到非常好的结果。而之所以难训练是因为学习过程容易陷入到马鞍面中，即在坡面上，一部分点是上升的，一部分点是下降的。而这种情况比较容易出现在平坦区域，在这种区域中，所有方向的梯度值都几乎是 0。</p>
+<h4 id="四、Momentum"><a href="#四、Momentum" class="headerlink" title="四、Momentum"></a>四、Momentum</h4><p>原理：</p>
+<p>模拟运动惯性，即更新的时候在一定程度上保留之前更新的方向，同时利用当前batch的梯度微调最终的更新方向。动量项在梯度指向方向相同的方向逐渐增大，对梯度指向改变的方向逐渐减小 。动量项 γ 往往被设置为 0.9  </p>
+<p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/momentum.PNG" alt=""></p>
+<p>di和di-1是下次和本次的更新方向，相同就加强，可以看作是动量方向</p>
+<p><img src="/image/机器学习/优化算法的比较/SGD_mom.png" alt=""></p>
+<p>优点：</p>
+<p>帮助 SGD 在相关方向加速前进，并减少它的震荡。 </p>
+<h4 id="五、NAG"><a href="#五、NAG" class="headerlink" title="五、NAG"></a>五、NAG</h4><p>原理：</p>
+<p>但当一个小球从山谷上滚下的时候，盲目的沿着斜率方向前行，其效果并不令人满意。我们需要有一个更「聪明」的小球，它能够知道它再往哪里前行，并在知道斜率再度上升的时候减速。</p>
+<p>Nesterov 加速梯度法（NAG）是一种能给予梯度项上述<strong>「预测」</strong>功能的方法。我们知道，我们使用动量项γvt-1 来「移动」参数项θ。通过计算θ-γvt-1，我们能够得到一个下次参数位置的近似值——也就是能告诉我们参数大致会变为多少。那么，通过基于未来参数的近似值而非当前的参数值计算相得应罚函数 J(θ-γvt-1) 并求偏导数，我们能让优化器高效地「前进」并收敛：</p>
+<p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/nesterov.PNG" alt=""></p>
+<p>公式变换：</p>
+<p><img src="/image/机器学习/优化算法的比较/nesterov1.PNG" alt=""></p>
+<p>后面的加上去的项就是近似函数的二阶导信息，二阶导就是斜率的变化的快慢，怪不得可以加速收敛了。本次的梯度相对上次的梯度加大了，那么我有理由相信下次梯度也会变大。</p>
+<p>公式推导过程：<a href="http://www.360doc.com/content/16/1010/08/36492363_597225745.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/16/1010/08/36492363_597225745.shtml</a></p>
+<p>实际代码效果证明：<a href="https://github.com/WarBean/zhihuzhuanlan/blob/master/Momentum_Nesterov.ipynb" target="_blank" rel="noopener">https://github.com/WarBean/zhihuzhuanlan/blob/master/Momentum_Nesterov.ipynb</a></p>
+<h4 id="六、Adagrad"><a href="#六、Adagrad" class="headerlink" title="六、Adagrad"></a>六、Adagrad</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/adagrad.PNG" alt=""></p>
+<p>具体写法：</p>
+<p><img src="/image/机器学习/优化算法的比较/adagrad1.PNG" alt=""></p>
+<p>特点：</p>
+<ul>
+<li>适合用于稀疏梯度</li>
+<li>前期梯度下降较快，后期梯度下降较慢</li>
+<li>具有自适应学习率</li>
+<li>训练后期，由于梯度累计较大，会使训练提前结束</li>
+</ul>
+<h4 id="七、Adadelta"><a href="#七、Adadelta" class="headerlink" title="七、Adadelta"></a>七、Adadelta</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/adadelta.PNG" alt=""></p>
+<p>另种写法：</p>
+<p><img src="/image/机器学习/优化算法的比较/adadelta1.PNG" alt=""></p>
+<p>特点：</p>
+<p>在adagrad基础上，减少提前结束训练的风险</p>
+<p>后期容易在小范围内产生震荡 </p>
+<h4 id="七、RMSprop（adadelta的特例）"><a href="#七、RMSprop（adadelta的特例）" class="headerlink" title="七、RMSprop（adadelta的特例）"></a>七、RMSprop（adadelta的特例）</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/Rmspro.PNG" alt=""></p>
+<p>特点：</p>
+<p>Adagrad会累加之前所有的梯度平方，而RMSprop仅仅是计算对应的平均值，因此可缓解Adagrad算法学习率下降较快的问题。 </p>
+<h4 id="八、Adam"><a href="#八、Adam" class="headerlink" title="八、Adam"></a>八、Adam</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/adam.PNG" alt=""></p>
+<p>原理：</p>
+<p>它利用误差函数的一阶矩估计和二阶矩估计来约束全局学习率。  </p>
+<p>特点：</p>
+<ul>
+<li>Adam梯度经过偏置校正后，每一次迭代学习率都有一个固定范围，使得参数比较平稳</li>
+<li>结合了Adagrad善于处理稀疏梯度和RMSprop善于处理非平稳目标的优点</li>
+<li>为不同的参数计算不同的自适应学习率</li>
+<li>也适用于大多非凸优化问题——适用于大数据集和高维空间</li>
+</ul>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><table>
+<thead>
+<tr>
+<th>梯度修正</th>
+<th>优化算法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>没进入动量，且不具有自适应学习率</td>
+<td>BGD、SGD</td>
+</tr>
+<tr>
+<td>引入动量</td>
+<td>Momentum、Nesterov</td>
+</tr>
+<tr>
+<td>自适应学习率</td>
+<td>Adagrad、Adadelta、RMSprop</td>
+</tr>
+<tr>
+<td>引入动量且自适应学习率</td>
+<td>Adam、Adamx、Nadam</td>
+</tr>
+</tbody>
+</table>
+<h3 id="使用总结："><a href="#使用总结：" class="headerlink" title="使用总结："></a>使用总结：</h3><ul>
+<li>在不考虑优化算法的使用细节及其技巧的情况下，一般使用Adam</li>
+<li>虽然后面的优化算法都是在SGD上改进而来，但是目前很多paper依旧使用SGD</li>
+<li>一般在训练时，数据都要进行shuffle</li>
+<li>几种优化算法并不一定哪一个绝对好，视模型和数据而定</li>
+</ul>
+<h4 id="九、牛顿法"><a href="#九、牛顿法" class="headerlink" title="九、牛顿法"></a>九、牛顿法</h4><p>公式：</p>
+<p><img src="/image/机器学习/优化算法的比较/newton.PNG" alt=""></p>
+<p>回顾之前的θn=θn−1+Δθ，我们将损失函数在θn−1处进行<a href="https://blog.csdn.net/qsczse943062710/article/details/76763739" target="_blank" rel="noopener">二阶泰勒展开</a>：</p>
+<p>  <img src="/image/机器学习/优化算法的比较/newton1.PNG" alt=""><br>$$<br>要使L(θn)&lt;L(θn−1)，我们需要L′(θn−1)Δθ+L′′(θn−1)Δθ/2 ，对其求导，<br>令导数为0，可得：<br>$$<br><img src="/image/机器学习/优化算法的比较/newton2.PNG" alt=""></p>
+<p>也即牛顿法的迭代公式，拓展到高维数据，二阶导变为Hession矩阵，上式变为：  </p>
+<p><img src="/image/机器学习/优化算法的比较/newton3.PNG" alt=""></p>
+<p>牛顿法的直观理解，跟新θ使其线不断逼近目标x</p>
+<p><img src="/image/机器学习/优化算法的比较/newton4.PNG" alt=""></p>
+<p>特点：</p>
+<p>牛顿法具有二阶收敛性，每一轮迭代会让误差的数量级呈平方衰减。即在某一迭代中误差的数量级为0.01，则下一次迭代误差为0.0001，再下一次为0.00000001。收敛速度快，但是大规模数据时，Hession矩阵的计算与存储将是性能的瓶颈所在。    </p>
+<p>为此提出了一些算法，用来近似逼近这个Hession矩阵，最著名的有L-BFGS，优于BFGS，可适用于并行计算从而大大提高效率。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/21/机器学习/常见损失函数/" rel="next" title="常见损失函数">
+                <i class="fa fa-chevron-left"></i> 常见损失函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/22/机器学习/广义线性模型/" rel="prev" title="广义线性模型">
+                广义线性模型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2018/07/21/5b5347273dca4.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description">Winter is coming!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/jie786389209" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://blog.csdn.net/weixin_41123612" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#各种优化算法的比较"><span class="nav-number">1.</span> <span class="nav-text">各种优化算法的比较</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#各优化算法的公式和特点"><span class="nav-number">1.1.</span> <span class="nav-text">各优化算法的公式和特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、BGD批梯度下降"><span class="nav-number">1.1.1.</span> <span class="nav-text">一、BGD批梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、SGD随机梯度下降"><span class="nav-number">1.1.2.</span> <span class="nav-text">二、SGD随机梯度下降</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、Mini-batch-Gradient-Descent："><span class="nav-number">1.1.3.</span> <span class="nav-text">三、Mini-batch Gradient Descent：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、Momentum"><span class="nav-number">1.1.4.</span> <span class="nav-text">四、Momentum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、NAG"><span class="nav-number">1.1.5.</span> <span class="nav-text">五、NAG</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、Adagrad"><span class="nav-number">1.1.6.</span> <span class="nav-text">六、Adagrad</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七、Adadelta"><span class="nav-number">1.1.7.</span> <span class="nav-text">七、Adadelta</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七、RMSprop（adadelta的特例）"><span class="nav-number">1.1.8.</span> <span class="nav-text">七、RMSprop（adadelta的特例）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八、Adam"><span class="nav-number">1.1.9.</span> <span class="nav-text">八、Adam</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类"><span class="nav-number">1.2.</span> <span class="nav-text">分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用总结："><span class="nav-number">1.3.</span> <span class="nav-text">使用总结：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#九、牛顿法"><span class="nav-number">1.3.1.</span> <span class="nav-text">九、牛顿法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder"></span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
